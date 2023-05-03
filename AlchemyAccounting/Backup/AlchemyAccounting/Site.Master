@@ -1,0 +1,260 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AlchemyAccounting.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #headbtn
+        {
+            float: right;
+            width: 20%;
+            margin-top: 8px;
+        }
+        
+        .menulu
+        {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 35px;
+            background-color: #0f375b;
+        }
+        .menulu li
+        {
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .menulu a
+        {
+            text-decoration: none;
+            color: #FFF;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 10px 10px 5px 10px;
+            display: inline-block;
+            border-bottom: 5px solid #0f375b;
+        }
+        .menulu a:hover
+        {
+            border-bottom: 5px solid #FFF;
+        }
+        .menulu .sap
+        {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .menulu .active
+        {
+            border-bottom: 5px solid #4079ae;
+        }
+        .menulu .first
+        {
+            padding-left: 45px;
+        }
+        .pt10
+        {
+            padding-top: 10px;
+        }
+        .menulu li .submenu
+        {
+            padding-left: 0;
+            background: #0f375b;
+            list-style: none;
+            position: absolute;
+            margin-left: -28px;
+            display: none;
+            z-index: 999;
+            border-radius: 10px;
+        }
+        .menulu li .submenu li
+        {
+            display: block;
+            float: none;
+            padding-left: 37px;
+            padding-right: 56px;
+        }
+        .menulu li .submenu li:last-child
+        {
+            padding-bottom: 5px;
+        }
+        .menulu li:hover .submenu
+        {
+            display: block;
+        }
+        .menulu li .submenu li a
+        {
+            text-decoration: none;
+            color: #FFF;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 0px 0px 6px 0px;
+            display: inline-block;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page" style="width: 80%; margin: 0% 10% 0% 10%">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Welcome to Federal Freight System Ltd.
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <%--<asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">--%>
+                <%--                    <AnonymousTemplate>
+                        [ <a href="~/Login/UI/Login.aspx" id="HeadLoginStatus" runat="server">Log Out</a>
+                        ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>--%>
+                hi! <span class="bold">
+                    <asp:Label ID="lblUserNM" runat="server"></asp:Label>
+                    <%--<asp:LoginName ID="HeadLoginName" runat="server" />--%>
+                </span>! [
+                <%--<asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/Login/UI/Login.aspx" />--%>
+                <asp:LinkButton ID="lnkLOgout" runat="server" OnClick="lnkLOgout_Click">Log Out</asp:LinkButton>
+                ]
+                <%--</LoggedInTemplate>--%>
+                <%--</asp:LoginView>--%>
+            </div>
+            <div class="clear hideSkiplink">
+                <div id="headbtn">
+                    <asp:Label ID="lblUser" runat="server"></asp:Label>
+                    <div style="float: right; margin-right: 10px;">
+                        <asp:Button ID="btnExit" runat="server" Text="Exit" Font-Bold="True" Font-Italic="False"
+                            ForeColor="#FF9900" OnClick="btnExit_Click" />
+                    </div>
+                </div>
+                <%--  <div class="pt10">--%>
+                <ul class="menulu">
+                    <li class="first"><a href="#">Account Inputs</a>
+                        <ul class="submenu">
+                            <li><a href="/Accounts/UI/SingleTransaction.aspx">Single Transaction Entry</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/UI/MultipleVoucher.aspx">
+                                Muliple Voucher Entry</a> </li>
+                            <% if (Session["UserTp"].ToString() == "ADMIN")
+                               { %>
+                            <li><a href="/Accounts/UI/ChartofAccounts.aspx">Chart of Accounts Entry</a> </li>
+                            <li><a href="/Accounts/UI/CostPool.aspx">Branch/Sales Center Entry</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/UI/OpeningBalance.aspx">
+                                Closing Balance Entry</a> </li>
+                            <% } %>
+                            <li><a href="/Accounts/UI/Process.aspx">Process</a> </li>
+                        </ul>
+                    </li>
+                    <%--<li class="sap"><img src="Assets/image/menusap.png" /></li>--%>
+                    <li><a href="#">Account Reports</a>
+                        <ul class="submenu">
+                            <li><a href="/Accounts/Report/UI/RptCashBook.aspx">Cash Book</a> </li>
+                            <li><a href="/Accounts/Report/UI/RptBankBook.aspx">Bank Book</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/Report/UI/RptLedgerBook.aspx">
+                                Ledger Book</a> </li>
+                            <li><a href="/Accounts/Report/UI/RptReceiptsPayStat.aspx">Receipts & Payment Statement
+                                Consolidated</a> </li>
+                            <li><a href="/Accounts/Report/UI/RptReceiptsPayStatSeleted.aspx">Receipts & Payment
+                                Statement Selected</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/Report/UI/RptRecPayDet.aspx">
+                                Receipts & Payment Statement Details</a> </li>
+                            <% if (Session["UserTp"].ToString() == "ADMIN")
+                               { %>
+                            <li><a href="/Accounts/Report/UI/RptTrialBalance.aspx">Trial Balance</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/Report/UI/TrialBalanceDetails.aspx">
+                                Trial Balance Details</a> </li>
+                            <li><a href="/Accounts/Report/UI/RptIncomeST.aspx">Income Statement</a> </li>
+                            <li><a href="/Accounts/Report/UI/BalanceSheet.aspx">Balance Sheet</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/Report/UI/RptNotesAcc.aspx">
+                                Notes to the Accounts</a> </li>
+                            <% } %>
+                            <li><a href="/Accounts/Report/UI/RptTransList.aspx">Transaction Listing</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/Report/UI/ProjectExpenseStatement.aspx">
+                                Branch Wise Expense Statement</a> </li>
+                            <li><a target="_blank" href="/Accounts/Report/Report/rptChartofAcc.aspx">Chart of Accounts</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CNF Inputs</a>
+                        <ul class="submenu">
+                            <li><a href="/CNF/ui/cnf-job-info.aspx">Job Information - 1</a> </li>
+                            <li><a href="/CNF/JobReceive/JobReceive.aspx">Job Receive - 2</a> </li>
+                            <li><a href="/CNF/ui/cnf-job-expense.aspx">Job Expenses - 3</a> </li>
+                            <li><a href="/CNF/JobStatus/JobStatus.aspx">Job Status - 4</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/CNF/JobBillInformation/JobBillInformation.aspx">
+                                Bill (Job) Information - 5</a> </li>
+                            <li><a href="/CNF/ExpenseInformation.aspx">Expense Information</a> </li>
+                            <li><a href="/CNF/Party/PartyInformation.aspx">Party Information</a> </li>
+                            <li><a href="/CNF/PartyCommission/commission.aspx">Party Commission</a> </li>
+                            <%--<li style="border-bottom: 2px solid #fff;"><a href="/Accounts/UI/MultipleVoucher.aspx">
+                                Muliple Voucher Entry</a> </li>
+                            <% if (Session["UserTp"].ToString() == "ADMIN")
+                               { %>
+                            <li><a href="/Accounts/UI/ChartofAccounts.aspx">Chart of Accounts Entry</a> </li>
+                            <li><a href="/Accounts/UI/CostPool.aspx">Branch/Sales Center Entry</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/Accounts/UI/OpeningBalance.aspx">
+                                Closing Balance Entry</a> </li>
+                            <% } %>
+                            <li><a href="/Accounts/UI/Process.aspx">Process</a> </li>--%>
+                        </ul>
+                    </li>
+                    <li><a href="#">CNF Report</a>
+                        <ul class="submenu">
+                            <li style="border-bottom: 2px solid #fff;"></li>
+                            <li><a href="/CNF/report/ui/RptExpHeadRegisterForm.aspx">Expense Head Wise Details Statement</a>
+                            </li>
+                            <li><a href="/CNF/report/ui/Expense_PL_ST.aspx">Expense Head Wise P/L Statement</a>
+                            </li>
+                            <li><a href="/CNF/report/ui/ExpenseRegisterForm.aspx">Expense Register - Details</a>
+                            </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/CNF/report/ui/RptExpenseRegCatForm.aspx">Expense Register - Selected Job</a>
+                            </li>
+                            <li><a href="/CNF/report/ui/RptJobInfoForm.aspx">Job Register</a> </li>
+                            <li><a href="/CNF/report/ui/rpt-date-wise-job-form.aspx">Job Register - Date Wise </a></li>
+                            <li><a href="/CNF/report/ui/rpt-regID-year-wise-job-form.aspx">Job Register - Station Wise </a>
+                            </li>
+                            <li><a href="/CNF/report/ui/rpt-jobtypw-wise-form.aspx">Job Register - Job Type Wise </a>
+                            </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/CNF/report/ui/rpt-party-jobyy-wise-job-form.aspx">Job Register - Party Wise </a>
+                            </li>
+                            <li><a href="/CNF/report/ui/RptImportInfoForm.aspx">Bill Forwarding - Import</a>
+                            </li>
+                            <li style="border-bottom: 2px solid #fff;"><a href="/CNF/report/ui/RptExportInfoForm.aspx">
+                                Bill Forwarding - Export</a> </li>
+                            <li><a href="/CNF/report/ui/job-bill-status.aspx">Job Wise Bill Status</a> </li>
+                            <li><a href="/CNF/report/ui/job-bill-status-party.aspx">Party Wise Bill Status</a> </li>
+                            <li><a href="/CNF/report/ui/job-bill-status-station.aspx">Station Wise Bill Status</a> </li>
+                            <li style="border-bottom: 2px solid #fff;"></li>
+                            <li><a href="/CNF/report/ui/job-incom-bill.aspx">Job - Incomplete for Bill</a> </li>
+                        </ul>
+                    </li>
+                    <% if (Session["UserTp"].ToString() == "ADMIN")
+                       { %>
+                    <li><a href="#">User Management</a>
+                        <ul class="submenu">
+                            <li id="hierarchi" runat="server"><a href="/user_management/ui/create-user.aspx">Create
+                                User</a> </li>
+                        </ul>
+                    </li>
+                    <% }%>
+                </ul>
+                <%--</div>--%>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        Developed By : <a target="_blank" href="http://www.alchemy-bd.com/">Alchemy Software</a>
+    </div>
+    </form>
+</body>
+</html>

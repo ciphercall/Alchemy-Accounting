@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Partymst.Master.cs" Inherits="AlchemyAccounting.Partymst" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Home | Trade Abroad</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Party/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="/Party/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="/Party/css/animations.css" rel="stylesheet" />
+    <link href="/Party/css/style.css" rel="stylesheet"/>
+    <link href="/Party/color/default.css" rel="stylesheet"/>
+    <asp:ContentPlaceHolder ID="head" runat="server"/>
+    
+</head>
+<body>
+    <form runat="server" id="form1">
+    <!-- Navigation -->
+    <div id="navigation">
+        <nav class="navbar navbar-custom" role="navigation">
+                              <div class="container">
+                                    <div class="row">
+                                          <div class="col-md-6">
+                                                   <div class="site-logo">
+                                                            <a  href="/index.aspx" class="h2">Trade Abroad</a>
+                                                    </div>
+                                          </div>
+                                          
+
+                                          <div class="col-md-6">
+                         
+                                                      <!-- Brand and toggle get grouped for better mobile display -->
+                                          
+                                                      <!-- Collect the nav links, forms, and other content for toggling -->
+                                                      <div class="">
+                                                            <ul class="nav navbar-nav navbar-right">
+                                                                
+                                                                <li><asp:Button runat="server" CssClass="form-control" Text="Home"  ID="btnHome" OnClick="btnHome_Click" />
+                                                                    </li>
+                                                                <li><asp:Button runat="server" CssClass="form-control" Text="Change Password"  ID="btnchangpass" OnClick="btnchangpass_Click"/>
+                                                                    </li>
+                                                                <li><asp:Button runat="server" CssClass="form-control" Text="Log Out"  ID="btnlogout" OnClick="btnlogout_Click"/>
+                                                                    </li>
+                                                                  
+                                                            </ul>
+                                                      </div>
+                                                      <!-- /.Navbar-collapse -->
+                             
+                                          </div>
+                                    </div>
+                              </div>
+                              <!-- /.container -->
+                        </nav>
+    </div>
+         
+    <!-- /Navigation -->  
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    
+    
+    
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-left">
+                    <p>&copy;Copyright <%=DateTime.Now.Year %> -Trade Abroad</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p> Developed by <a href="http://alchemy-bd.com">Alchemy Software</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+
+    <!-- Core JavaScript Files -->
+    <%--<script src="js/jquery.min.js"></script>	 
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/Party/js/jquery.sticky.js"></script>
+    <script src="/Party/js/jquery.easing.min.js"></script>	
+	<script src="/Party/js/jquery.scrollTo.js"></script>
+	<script src="/Party/js/jquery.appear.js"></script>
+	<script src="/Party/js/stellar.js"></script>
+	<script src="/Party/js/nivo-lightbox.min.js"></script>
+	
+    <script src="/Party/js/custom.js"></script>
+	<script src="/Party/js/css3-animate-it.js"></script>--%>
+
+    
+    </form>
+
+</body>
+</html>

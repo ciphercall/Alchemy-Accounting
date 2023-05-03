@@ -1,0 +1,16 @@
+#backToTop {
+  position: fixed;
+  bottom: 107px;
+  right: 6px;
+  font-size: 20px;
+}
+.centered {
+  margin: 0px auto;
+  float: none;
+}
+/* Mobile first queries */
+/* Larger than mobile */
+/* Larger than phablet */
+/* Larger than tablet */
+/* Larger than desktop */
+/* Larger than Desktop HD */

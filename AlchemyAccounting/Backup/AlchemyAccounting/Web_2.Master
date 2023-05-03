@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Web_2.Master" Inherits="AlchemyAccounting.Web_2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%-- <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />--%>
+    <style type="text/css">
+        .style1
+        {
+            height: 52px;
+            width: 100%;
+            font-size: xx-large;
+            font-family: "Wide Latin";
+            color: #2C649C;
+            font-weight: normal;
+            background-color: #2D639C;
+            text-align: center;
+        }
+        .style2
+        {
+            height: 842px;
+            background-color: #B6B7BC;
+            width: 100%;
+            margin-right: 0px;
+        }
+        .style3
+        {
+            height: 2px;
+            background-color: #ECDFBF;
+        }
+        .menu
+        {
+            text-align: left;
+        }
+        .newStyle1
+        {
+        }
+        .style12
+        {
+            width: 100%;
+            height: 59px;
+            color: #999999;
+            background-color: #999999;
+        }
+        .style15
+        {
+            height: 871px;
+            width: 931px;
+        }
+        .style16
+        {
+            font-size: medium;
+            font-family: Century Gothic;
+        }
+        .style17
+        {
+            color: #FFFFFF;
+            font-size: xx-large;
+        }
+        .style18
+        {
+            font-family: "Comic Sans MS";
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server" style="background-position: inherit; padding: 3px;
+    margin: 3px; border-width: 3px; background-attachment: scroll; width: 99%; height: 100%;"
+    class="style15">
+    <table class="style12">
+        <tr>
+            <td style="vertical-align: middle; text-align: right; font-size: large; color: #999999;
+                font-family: Arial;" class="style3">
+                <h1 class="style1" style="font-size: medium">
+                    <strong><span class="style18"><span class="style17">Federal Freight System Ltd.</span></span><span
+                        class="style16"> </span></strong>
+                    <%--<asp:LinkButton ID="LinkButton1" runat="server" 
+                            PostBackUrl="~/Home/Home.aspx" Width="281px" Font-Bold="True" 
+                            Font-Italic="True" 
+                            style="font-size: small; font-family: Verdana; text-align: center;" 
+                            Height="38px">Home Page</asp:LinkButton>--%>
+                </h1>
+            </td>
+        </tr>
+    </table>
+    <div style="padding: 2px; margin-left: -2px; margin-top: 2px; margin-bottom: 2px;
+        height: 100%; width: 100%; width: 100%; height: 560px;" align="left">
+        <div class="style2" style="width: 100%; background-image: none; background-color: #CCCCCC;
+            height: 100%;">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <br />
+            <div style="text-align: center; font-size: small; color: Navy;  vertical-align: middle;"
+                class="style11">
+                <span class="style16"><strong>Developed By : <a target="_blank" href="http://www.alchemy-bd.com/">Alchemy Software</a></strong></span>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

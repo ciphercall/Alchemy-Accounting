@@ -1,0 +1,492 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="rpt-bill-details.aspx.cs"
+    Inherits="AlchemyAccounting.CNF.report.vis_rep.rpt_bill_details" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <link rel="shortcut icon" href="../../../Images/favicon.ico" />
+    <script type="text/javascript">
+        function ClosePrint() {
+            var print = document.getElementById("print");
+            print.style.visibility = "hidden";
+            //            print.display = false;
+
+            window.print();
+        }
+    </script>
+    <style media="print">
+        .ShowHeader thead
+        {
+            display: table-header-group;
+            border: 1px solid #000;
+        }
+    </style>
+    <style type="text/css">
+        .style2
+        {
+            font-weight: normal;
+        }
+        .style6
+        {
+            font-size: 16px;
+        }
+        body
+        {
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFA;
+            font: 14px "Calibri";
+        }
+        *
+        {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        .page
+        {
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: .5cm;
+            margin: 1cm auto;
+            border: 1px #D3D3D3 solid;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .subpage
+        {
+            padding: 1cm;
+            border: 5px red solid;
+            height: 237mm;
+            outline: 2cm #FFEAEA solid;
+        }
+        
+        @page
+        {
+            size: A4;
+            margin: 0;
+        }
+        @media print
+        {
+            .page
+            {
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                min-height: initial;
+                box-shadow: initial;
+                background: initial;
+                page-break-after: avoid; /* here always for subpage */
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+        <%--<div style="float: left; height: 842px; width: 100%">--%>
+        <div style="float: left; width: 6%; min-height: 27cm; border-right: 1px solid #000;
+            margin-right: 2px">
+            <div style="margin-top: 190px">
+                <img alt="ffslbot" height="100%;" src="../../../Images/ffsl_left.png" width="100%" />
+            </div>
+        </div>
+        <div style="float: left; width: 92%">
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 10%">
+                        <div style="width: 120px; height: 60px;">
+                            <img alt="logo" height="100%;" src="../../../Images/logo.png" width="100%" />
+                        </div>
+                    </td>
+                    <td style="width: 80%; text-align: center">
+                        &nbsp;
+                        <asp:Label runat="server" ID="lblCompanyNM" Visible="False"></asp:Label>
+                        <asp:Label ID="lblAddress" runat="server" Style="font-family: Calibri; font-size: 9px"
+                            Visible="False"></asp:Label>
+                    </td>
+                    <td style="width: 10%">
+                        <input id="print" tabindex="1" type="button" value="Print" onclick="ClosePrint()"
+                            style="font-family: Calibri; font-size: 15px; font-weight: bold; font-style: inherit;
+                            text-align: right" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <strong style="font-size: 14px; font-family: Calibri;">&nbsp; International Freight
+                            Forwarders, Customs Clearing &amp; Forwarding Agent</strong>
+                    </td>
+                    <td style="width: 10%">
+                        &nbsp;
+                        <asp:Label ID="lblBill" runat="server" Visible="False" Style="font-size: 12px"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 20%; text-align: center; font-weight: bold">
+                                    DHAKA OFFICE
+                                </td>
+                                <td style="width: 20%; text-align: center; font-weight: bold">
+                                    CHITTAGONG OFFICE
+                                </td>
+                                <td style="width: 20%; text-align: center; font-weight: bold">
+                                    BENAPOLE OFFICE
+                                </td>
+                                <td style="width: 20%; text-align: center; font-weight: bold">
+                                    COMILLA OFFICE
+                                </td>
+                                <td style="width: 20%; text-align: center; font-weight: bold">
+                                    SAVAR OFFICE
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 20%; text-align: center; font-size: 8px">
+                                    HOUSE # 3 (GROUND FLOOR)
+                                    <br />
+                                    ROAD # 10, SECTOR #4 UTTARA, DHAKA - 1230.<br />
+                                    EMAIL : ffslbd@dhaka.net
+                                </td>
+                                <td style="width: 20%; text-align: center; font-size: 8px">
+                                    AZIM COURT (1ST FLOOR)
+                                    <br />
+                                    413/B, AGRABAD COMMERCIAL AREA, CHITTAGONG, BANGLADESH<br />
+                                    EMAIL: ffsl@colbd.com
+                                </td>
+                                <td style="width: 20%; text-align: center; font-size: 8px">
+                                    SAMSUR RAHMAN BUILDING(1ST FLOOR), BENAPOLE BAZAR,
+                                    <br />
+                                    JESSORE, BANGLADESH<br />
+                                    EMAIL: ffslbnpl@gmail.com
+                                </td>
+                                <td style="width: 20%; text-align: center; font-size: 8px">
+                                    Comilla EPZ, Comilla , Bangladesh,<br />
+                                    Phone: 01674714957
+                                </td>
+                                <td style="width: 20%; text-align: center; font-size: 8px">
+                                    Baipal, Ganakbari, Savar, Dhaka.<br />
+                                    Mobile: 01678031801
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%">
+                    </td>
+                    <td style="width: 80%; text-align: center; font-family: Calibri; font-size: 18px;
+                        font-weight: bold;">
+                        <span class="style2">C&amp;F BILL</span> -
+                        <asp:Label ID="lblJobTP" runat="server"></asp:Label>
+                    </td>
+                    <td style="width: 10%">
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Job No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left" colspan="2">
+                        <asp:Label ID="lblJobNo" runat="server"></asp:Label>
+                    </td>
+                    <td style="width: 39%; font-family: Calibri; font-size: 12px; text-align: right">
+                        <strong>Print Date :</strong>
+                        <asp:Label ID="lblPrintDate" runat="server" Font-Names="Calibri" Font-Size="12px"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Bill No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="width: 25%; font-family: Calibri; font-size: 15px; text-align: left">
+                        <asp:Label ID="lblBillNo" runat="server"></asp:Label>
+                    </td>
+                    <td style="width: 20%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Date :
+                        <asp:Label ID="lblJobDate" runat="server"></asp:Label>
+                    </td>
+                    <td style="width: 39%; font-family: Calibri; font-size: 15px; text-align: left">
+                        &nbsp;
+                        <asp:Label ID="lblReg" runat="server" Visible="False"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Account
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left" colspan="3">
+                        <asp:Label ID="lblAccount" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Address
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left" colspan="3">
+                        <asp:Label ID="lblAccAdd" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        B/E No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        <asp:Label ID="lblBENo" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        &nbsp;
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Permit No :
+                        <asp:Label ID="lblPermitNo" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Invoice No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        <asp:Label ID="lblInvoiceNo" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Date :
+                        <asp:Label ID="lblInvoiceDt" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        B/L No :
+                        <asp:Label ID="lblBLNO" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        L/C No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        <asp:Label ID="lblLc" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Date :
+                        <asp:Label ID="lblLCDate" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        AWB No :
+                        <asp:Label ID="lblAwbNo" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Undertaking No
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left" colspan="2">
+                        <asp:Label ID="lblHBLNO" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        HAWB No :
+                        <asp:Label ID="lblHAwbNo" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Goods
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left" colspan="2">
+                        <asp:Label ID="lblGoodsDesc" runat="server"></asp:Label>
+                        &nbsp;
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Packages :
+                        <asp:Label ID="lblPackages" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; font-family: Calibri; font-size: 15px; text-align: left">
+                        Value (USD)
+                    </td>
+                    <td style="width: 1%; font-family: Calibri; font-size: 15px; font-weight: bold; text-align: center">
+                        :
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        <asp:Label ID="lblValUSD" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Exc. Rate :
+                        <asp:Label ID="lblExRt" runat="server"></asp:Label>
+                    </td>
+                    <td style="font-family: Calibri; font-size: 15px; text-align: left">
+                        Value Tk. :
+                        <asp:Label ID="lblValTk" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+            <div style="width: 100%; height: 480px">
+                <asp:GridView ID="gvReport" runat="server" AutoGenerateColumns="False" Font-Names="Calibri"
+                    OnRowDataBound="gvReport_RowDataBound" Width="100%" Style="font-size: 14px">
+                    <Columns>
+                        <asp:BoundField HeaderText="Serial">
+                            <HeaderStyle HorizontalAlign="Center" Width="5%" />
+                            <ItemStyle HorizontalAlign="Center" Width="5%" />
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Particulars">
+                            <HeaderStyle HorizontalAlign="Center" Width="45%" />
+                            <ItemStyle HorizontalAlign="Left" Width="45%" />
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Remarks">
+                            <HeaderStyle HorizontalAlign="Center" Width="25%" />
+                            <ItemStyle HorizontalAlign="Left" Width="25%" />
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Date">
+                            <HeaderStyle HorizontalAlign="Center" Width="7%" />
+                            <ItemStyle HorizontalAlign="Center" Width="7%" />
+                        </asp:BoundField>
+                        <asp:BoundField HeaderText="Amount">
+                            <HeaderStyle HorizontalAlign="Center" Width="18%" />
+                            <ItemStyle HorizontalAlign="Right" Width="18%" />
+                        </asp:BoundField>
+                    </Columns>
+                    <FooterStyle Font-Size="14px" />
+                    <HeaderStyle Font-Size="14px" />
+                    <RowStyle Font-Size="12px" />
+                </asp:GridView>
+                <table style="width: 100%; font-family: Calibri; font-size: 14px">
+                    <tr>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td colspan="3" style="text-align: right">
+                            C&amp;F Commission 
+                        <asp:Label ID="lblCRem" runat="server"></asp:Label>
+                    &nbsp;(Tk.) :
+                        </td>
+                        <td style="width: 18%; text-align: right">
+                            <asp:Label ID="lblAgencyCom" runat="server" Font-Names="Calibri" Font-Size="15px"
+                                Style="font-size: 14px">0.00</asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 45%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 27%; text-align: right">
+                            Total (Tk.) :
+                        </td>
+                        <td style="width: 18%; text-align: right">
+                            <asp:Label ID="lblTotal" runat="server" Font-Names="Calibri" Font-Size="15px" Style="font-size: 14px">0.00</asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 45%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 27%; text-align: right">
+                            &nbsp;Advance Amount (Tk.) :
+                        </td>
+                        <td style="width: 18%; text-align: right">
+                            <asp:Label ID="lblAdvAmt" runat="server" Font-Names="Calibri" Font-Size="15px" Style="font-size: 14px">0.00</asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 45%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 5%">
+                            &nbsp;
+                        </td>
+                        <td style="width: 27%; text-align: right">
+                            Balance Amount (Tk.) :
+                        </td>
+                        <td style="width: 18%; text-align: right">
+                            <asp:Label ID="lblBalanceAmt" runat="server" Font-Names="Calibri" Font-Size="15px"
+                                Style="font-size: 14px">0.00</asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            In Words :
+                            <asp:Label ID="lblInWords" runat="server" Font-Names="Calibri" Font-Size="15px" Style="font-size: 14px"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right" class="style6">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right" class="style6">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right" class="style6">
+                            <strong>&nbsp;FOR FEDERAL FREIGHT SYSTEMS LIMITED</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 100%; height: 100px">
+                <div style="text-align: left; color: #000; font-size: 14px; height: 18px; width: 100%">
+                    IT IS A COMPUTER GENERATED BILL, SIGNATURE & SEAL IS NOT MANDATORY.</div>
+                <div style="text-align: left; color: #cccccc; font-size: 14px; height: 18px; width: 100%">
+                    Developed By: Alchemy Software, 01712021091, 01816910849</div>
+                <div style="width: 100%; height: 30px">
+                    <img alt="ffslbot" height="100%;" src="../../../Images/ffsl_footer.png" width="100%" />
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <p>
+        &nbsp;</p>
+</body>
+</html>

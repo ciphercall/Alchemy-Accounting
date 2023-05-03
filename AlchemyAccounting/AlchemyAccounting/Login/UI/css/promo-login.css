@@ -1,0 +1,34 @@
+#promo-slider {
+  position: relative;
+}
+#promo-slider img {
+  height: 450px;
+  width: 100%;
+}
+#login-form {
+  position: absolute;
+  top: 40px;
+  left: 38%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  color: #fff;
+}
+#login-form h3,
+#login-form label {
+  color: #fff;
+}
+#login-form button {
+  background: #000;
+  color: #fff;
+}
+@media (max-width: 767px) {
+  #login-form {
+    left: 5%;
+  }
+  #promo-slider-images {
+    height: 450px!important;
+  }
+  #promo-slider-images img {
+    display: none!important;
+  }
+}
